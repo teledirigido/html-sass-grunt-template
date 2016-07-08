@@ -1,0 +1,76 @@
+// top content for multiple headers
+// it might change with responsive
+
+// Colors
+$black: #000;
+$white: #fff;
+
+$body-font: Helvetica,Arial, sans-serif;
+$text-color: lighten($black,10%);
+$text-lh: 120%;
+
+$title-font:"Helvetica",Arial,Sans;
+$title-fontlight:"Helvetica",Arial,Sans;
+
+@mixin div-wrapper($width) {
+  max-width:$width;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  position: relative;
+
+  @media screen and (max-width:#{$width + 50px}){
+    padding-left:2rem;
+    padding-right:2rem;
+  }
+
+  @include mobile {
+    max-width:492px;
+    width:100%;
+    min-width:320px;
+  }
+}
+
+$desktop: 961px;
+$tablet: 561px;
+$mobile: 560px;
+
+@mixin desktop {
+  	@media (min-width: #{$desktop}) {
+    	@content;
+  	}
+}
+
+@mixin nondesktop {
+  	@media (max-width: #{$desktop - 1px}) {
+    	@content;
+  	}
+}
+
+@mixin tablet {
+  	@media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    	@content;
+  	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$mobile}) {
+    	@content;
+  	}	
+}
+
+@mixin nonmobile {
+	@media (min-width: #{$tablet}) {
+    	@content;
+  	}	
+}
+
+@mixin retina($pixelsize) {
+  @media  only screen and (-webkit-min-device-pixel-ratio: #{$pixelsize}),
+    only screen and (   min--moz-device-pixel-ratio: #{$pixelsize}),
+    only screen and (     -o-min-device-pixel-ratio: #{$pixelsize*2}/2),
+    only screen and (        min-device-pixel-ratio: #{$pixelsize}) {
+      @content;
+
+  }
+}

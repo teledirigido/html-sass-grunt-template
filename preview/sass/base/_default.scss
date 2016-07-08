@@ -1,0 +1,291 @@
+//============================================================
+// Some of this mixins are from: 
+//
+// adamcbrewer: github.com/adamcbrewer
+//
+// And other places I can't really remember
+// 
+//============================================================
+
+//============================================================
+// Add font font face
+//============================================================
+
+@mixin add-font-face($font-face-name,$font-face-file){
+
+    @include font-face($font-face-name, 
+      font-files(
+            $font-face-file + '.woff', woff,
+            $font-face-file + '.ttf', ttf,
+            $font-face-file + '.svg', svg
+        ),
+
+        $font-face-file'.eot');
+    
+}
+
+//============================================================
+// REM
+//============================================================
+
+@function rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+//============================================================
+// FLEX
+//============================================================
+
+@mixin flex($value) {
+  -webkit-box-flex:   $value;     /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex:    $value;     /* OLD - Firefox 19- */
+  -webkit-flex:     $value;   /* Chrome */
+  -ms-flex:       $value;   /* IE 10 */
+  flex:       $value;  
+}
+
+@mixin flex-display {
+
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex; 
+
+}
+
+@mixin flex-direction($value) {
+
+  -webkit-flex-direction: $value;
+  -ms-flex-direction:   $value;
+  flex-direction:     $value;
+
+}
+
+//============================================================
+// Appearance
+//============================================================
+
+@mixin appearance ($value) {
+  -webkit-appearance: $value;
+     -moz-appearance: $value;
+          appearance: $value;
+}
+
+@mixin background-size ($values...) {
+    -webkit-background-size: $values; // For Android 2.x
+            background-size: $values;
+}
+
+@mixin columns($count: 3, $gap: 10px , $break: "break" ){
+  
+
+  -webkit-column-count: $count;
+  -moz-column-count:    $count;
+  column-count:         $count;
+
+  -webkit-column-gap:   $gap;
+  -moz-column-gap:      $gap;
+  column-gap:           $gap;
+  
+  @if $break == "break" {
+      & > ._cell {
+        -webkit-transform:translateZ(0); // hack for Chrome+
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid-column;
+      }
+  }
+
+}
+
+@mixin user-select($value) {
+    -webkit-touch-callout:  $value;
+    -webkit-user-select:    $value;
+    -khtml-user-select:     $value;
+    -moz-user-select:       $value;
+    -ms-user-select:        $value;
+    user-select:            $value;
+}
+
+@mixin filter($filter-type,$filter-amount) { 
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+//============================================================
+// Placeholder
+//============================================================
+
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; } 
+    &::-op-input-placeholder { @content; } 
+}
+
+//============================================================
+// Structure
+//============================================================
+ 
+@mixin box-sizing ($arguments) {
+  -webkit-box-sizing: $arguments;
+     -moz-box-sizing: $arguments;
+       -o-box-sizing: $arguments;
+          box-sizing: $arguments;
+}
+
+@mixin border-radius ($arguments) {
+  -webkit-border-radius: $arguments;
+     -moz-border-radius: $arguments;
+       -o-border-radius: $arguments;
+          border-radius: $arguments;
+}
+
+//============================================================
+// Animations
+//============================================================
+ 
+@mixin transition($arguments...) {
+    -webkit-transition: $arguments;
+            transition: $arguments;
+}
+ 
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+ 
+//============================================================
+// Transform
+// 
+// USAGE: ([property ease time] ...)
+//============================================================
+
+
+@function prefix($property, $prefixes: (webkit moz o ms)) {
+    $vendor-prefixed-properties: transform background-clip background-size;
+    $result: ();
+    @each $prefix in $prefixes {
+       @if index($vendor-prefixed-properties, $property) {
+         $property: -#{$prefix}-#{$property}
+       }
+       $result: append($result, $property);
+    }
+    @return $result;
+}
+ 
+@function trans-prefix($transition, $prefix: moz) {
+    $prefixed: ();
+    @each $trans in $transition {
+        $prop-name: nth($trans, 1);
+        $vendor-prop-name: prefix($prop-name, $prefix);
+        $prop-vals: nth($trans, 2);
+        $prefixed: append($prefixed, ($vendor-prop-name $prop-vals), comma);
+    }
+    
+    @return $prefixed;
+}
+ 
+ 
+@mixin transition($values...) { 
+    $transitions: ();
+    @each $declaration in $values {
+        $prop: nth($declaration, 1);
+        $prop-opts: ();
+        $length: length($declaration);
+        @for $i from 2 through $length {
+            $prop-opts: append($prop-opts, nth($declaration, $i));   
+        }
+        $trans: ($prop, $prop-opts);
+        $transitions: append($transitions, $trans, comma);
+    }
+      
+    -webkit-transition: trans-prefix($transitions, webkit);
+    -moz-transition: trans-prefix($transitions, moz);
+    -o-transition: trans-prefix($transitions, o);
+    transition: $values;
+}
+
+
+@mixin transform-style ( $arguments ){
+  -webkit-transform-style: ( $arguments );
+     -moz-transform-style: ( $arguments );
+      -ms-transform-style: ( $arguments );
+          transform-style: ( $arguments );
+}
+
+@mixin transform($arguments...) {
+    -webkit-transform: $arguments;
+      -ms-transform: $arguments; // IE9
+          transform: $arguments;
+}
+ 
+@mixin transform-origin($arguments...) {
+  -webkit-transform-origin: $arguments;
+      -ms-transform-origin: $arguments; // IE9
+          transform-origin: $arguments;
+}
+ 
+@mixin rotate($arguments...) {
+  -webkit-transform: rotate($arguments);
+      -ms-transform: rotate($arguments); // IE9
+          transform: rotate($arguments);
+}
+ 
+@mixin backface-visibility ($arguments) {
+  -webkit-backface-visibility: $arguments;
+     -moz-backface-visibility: $arguments;
+      -ms-backface-visibility: $arguments;
+       -o-backface-visibility: $arguments;
+          backface-visibility: $arguments;
+}
+
+@mixin perspective ($arguments) {
+  -webkit-perspective: $arguments;
+     -moz-perspective: $arguments;
+      -ms-perspective: $arguments;
+       -o-perspective: $arguments;
+          perspective: $arguments;
+}
+
+@mixin perspective-origin ($arguments) {
+  -webkit-perspective-origin: $arguments;
+     -moz-perspective-origin: $arguments;
+      -ms-perspective-origin: $arguments;
+       -o-perspective-origin: $arguments;
+          perspective-origin: $arguments;
+}

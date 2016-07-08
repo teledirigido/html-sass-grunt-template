@@ -1,0 +1,14 @@
+ # Misc Files
+*[Tt]humbs.db
+readme.html
+license.txt
+.log
+.htaccess
+.DS_Store
+
+# Node.JS
+/node_modules
+
+# CSS and SASS files
+.sass-cache
+*.css.map

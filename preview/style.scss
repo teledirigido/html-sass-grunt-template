@@ -1,0 +1,67 @@
+/*!
+Theme Name: Little Cuba Theme 2015
+Theme URI: http://blacksheepdesign.co.nz
+Author: Blacksheepdesign 
+Author URI: http://www.blacksheepdesign.co.nz/
+Author Design: Clemens Bergmann - clemens@blacksheepdesign.co.nz
+Author Front-end and Integration: Miguel Garrido - miguel@blacksheepdesign.co.nz
+Description: Blacksheepdesign creates custom websites based on Wordpress using some really cool plugins. 
+Version: 3.0
+*/
+
+//
+// Template imports
+@import "sass/base/_default";
+@import "sass/base/_grid";
+@import "sass/base/_forms";
+@import "sass/base/_print";
+
+
+//
+// Global variables
+@import "sass/_global";
+@import "sass/_reset";
+
+// Your Wrappers
+.content-wrapper {
+	@include div-wrapper(1040px);
+	padding-top:2rem;
+	padding-bottom:2rem;
+}
+
+// Your colours
+// Background colours
+$white:#DEDEDE;
+$black:#333;
+.bgwhite { background-color:$white; }
+.bgblack { background-color:$black; }
+// Colours
+.white { color:$white; }
+.black { color:$black; }
+
+
+// Feel free to create your own
+// Margin bottom
+@for $i from 1 through 3 {
+	.mb#{$i} { margin-bottom:$i+rem; }
+}
+
+// Padding bottom
+@for $i from 1 through 3 {
+	.pb#{$i} { padding-bottom:$i+rem; }
+}
+
+
+// Addons
+@import "sass/_entry-content";
+@import "bower_components/font-awesome/scss/font-awesome.scss";
+
+// Partials
+@import "sass/_header";
+@import "sass/_footer";
+@import "sass/_sidebar";
+
+// Templates
+//  @import "sass/_single";
+//  @import "sass/_category";
+//  @import "sass/_home";

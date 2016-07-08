@@ -1,0 +1,43 @@
+// Standard contact form
+.field { 
+	
+	.text {
+    	padding:0;
+	}
+
+	.text,
+	.submit {
+		@include appearance(none);
+		@extend %p-font;
+		border:0 none;
+    	border-radius: 0;
+    	width:100%;
+
+    	&:focus {
+			outline:0 none;
+		}
+
+	}
+
+	.submit {
+
+		&:hover {
+			cursor:pointer;
+
+		}
+	}
+	
+}
+
+button {
+	border:0 none;
+	color:inherit;
+	font-family:inherit;
+	font-weight:inherit;
+	font-size:inherit;
+	
+	&:hover {
+		cursor:pointer;
+	}
+
+}

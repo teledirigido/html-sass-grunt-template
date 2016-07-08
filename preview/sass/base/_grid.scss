@@ -1,0 +1,55 @@
+@import "../_global";
+
+//  Local variables
+$base: 2;
+$limit: 4;
+
+// Affects all grids
+
+div[class^='span-'] { 
+	@extend %clear;
+}
+
+
+// Grid system
+@include mobile {
+	
+	@for $i from $base through $limit {
+		.span-#{$i} .item { 
+			float:none;
+			display:block;
+			width:100%;
+		}
+	}
+	
+}
+
+@include tablet {
+
+	@for $i from $base through 3 {
+		.span-#{$i} .item { 
+			float:left;
+			width: 50%;
+		}
+	}
+
+	@for $i from 4 through $limit {
+		.span-#{$i} .item { 
+			float:left;
+			width: (100%/3);
+		}
+	}
+
+}
+
+@include desktop {
+
+	@for $i from $base through $limit {
+		.span-#{$i} .item { 
+			float:left;
+			width: (100%/$i); 
+	
+		}
+	}
+
+}
