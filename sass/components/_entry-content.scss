@@ -8,7 +8,10 @@
 		&.alignright { margin-left:1rem; }
 	}
 
-	p { @extend %p-font!optional; margin-bottom:0.5rem; }
+	p { 
+		@extend %p-font!optional; 
+		margin-bottom:0.5rem; 
+	}
 	
 	p + h3,
 	p + h2 {

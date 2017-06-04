@@ -23,24 +23,6 @@ input[type="submit"]{
 	border:0 none; 
 }
 
-// Body & General Wrapper
-html, 
-body { 
-	margin:0; 
-	padding:0; 
-	height:100%; 
-	width:100%;
-}
-
-body { 
-	font-family:$body-font; 
-	font-size:1em;
-
-	@include mobile {
-		min-width:rem(320px);
-	}
-}
-
 
 //
 // Text Selection
@@ -97,11 +79,29 @@ body {
 .text-right { text-align: right; }
 
 // To extend
-%p-font {  font-family:$body-font; font-size:1em; color: $text-color; }
-%div-full { width:100%; height:100%; }
-%title-font { font-family:$title-font; }
-%title-fontlight { font-family:$title-fontlight;  }
-%tag-scrollable { overflow-scrolling: touch; -webkit-overflow-scrolling: touch; -moz-overflow-scrolling: touch; }
+%p-font { 
+	font-family:$body-font;
+	font-size:1em;
+	color: $text-color; 
+	line-height: $text-lh;
+}
+
+%div-full { 
+	width:100%;
+	height:100%; 
+}
+
+%title-font { 
+	font-family:$title-font; 
+}
+
+%title-fontlight { 
+	font-family:$title-fontlight;  
+}
+
+%tag-scrollable { 
+	overflow-scrolling: touch; -webkit-overflow-scrolling: touch; -moz-overflow-scrolling: touch; 
+}
 
 %clear {
 	*zoom: 1;
@@ -114,5 +114,10 @@ body {
 	}
 }
 
-%ul-horz { display: block; li { display:inline-block; } }
+%ul-horz { 
+	display: block; 
+	li { 
+		display:inline-block; 
+	}
+}
 

@@ -1,12 +1,10 @@
 /*!
-Theme Name: Little Cuba Theme 2015
-Theme URI: http://blacksheepdesign.co.nz
-Author: Blacksheepdesign 
-Author URI: http://www.blacksheepdesign.co.nz/
-Author Design: Clemens Bergmann - clemens@blacksheepdesign.co.nz
-Author Front-end and Integration: Miguel Garrido - miguel@blacksheepdesign.co.nz
-Description: Blacksheepdesign creates custom websites based on Wordpress using some really cool plugins. 
-Version: 3.0
+Theme Name: Custom Template
+Theme URI: http://miguel.nz
+Author: Miguel Garrido Iglesias
+Author URI: http://www.miguel.nz/
+Description: HTML Stylus Grunt Template.
+Version: 1.0
 */
 
 //
@@ -21,6 +19,23 @@ Version: 3.0
 // Global variables
 @import "sass/_global";
 @import "sass/_reset";
+
+html, 
+body { 
+  margin:0; 
+  padding:0; 
+  height:100%; 
+  width:100%;
+}
+
+body { 
+  font-family:$body-font; 
+  font-size:1em;
+
+  @include mobile {
+    min-width:rem(320px);
+  }
+}
 
 // Your Wrappers
 .content-wrapper {
@@ -53,13 +68,11 @@ $black:#333;
 
 
 // Addons
-@import "sass/_entry-content";
-@import "bower_components/font-awesome/scss/font-awesome.scss";
-
+@import "sass/components/_entry-content";
 // Partials
-@import "sass/_header";
-@import "sass/_footer";
-@import "sass/_sidebar";
+@import "sass/components/_header";
+@import "sass/components/_footer";
+@import "sass/components/_sidebar";
 
 // Templates
 //  @import "sass/_single";

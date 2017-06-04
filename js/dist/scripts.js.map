@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/scripts.js"],"names":["document","addEventListener","console","log"],"mappings":";;AAAAA,SAASC,gBAAT,CAA0B,kBAA1B,EAA8C,YAAU;AACtDC,UAAQC,GAAR,CAAY,wBAAZ;AACD,CAFD","file":"scripts.js","sourcesContent":["document.addEventListener('DOMContentLoaded', function(){\n  console.log('hello from scripts.js!')\n})"]}

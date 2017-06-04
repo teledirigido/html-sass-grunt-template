@@ -12,7 +12,8 @@
 		<meta name="author" content="">
 
 		<link rel="stylesheet" href="style.css">
-		
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
 
@@ -79,16 +80,16 @@
 				</div>
 
 				<div class="span-4">
-					<div class="item">
+					<div class="item entry-content">
 						<p><strong>Span 4 column 1</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, explicabo.</p>
 					</div>
-					<div class="item">
+					<div class="item entry-content">
 						<p><strong>Span 4 column 2</strong> Excepturi saepe ab molestias repudiandae facilis asperiores, reiciendis sit deserunt.</p>
 					</div>
-					<div class="item">
+					<div class="item entry-content">
 						<p><strong>Span 4 column 3</strong> Excepturi saepe ab molestias repudiandae facilis asperiores, reiciendis sit deserunt.</p>
 					</div>
-					<div class="item">
+					<div class="item entry-content">
 						<p><strong>Span 4 column 4</strong> Excepturi saepe ab molestias repudiandae facilis asperiores, reiciendis sit deserunt.</p>
 					</div>
 				</div>
@@ -96,12 +97,12 @@
 			</div>
 		</div>
 
-		<div class="content-wrapper black">
-			SASS, Font-Awesome, Javascript Template created for <a href="//blacksheepdesign.co.nz" taget="_blank">Blacksheepdesign</a>
+		<div class="content-wrapper entry-content black">
+			<p>SASS Grid System, Font-Awesome, Javascript Template.</p>
+			<p>created for <i class="fa fa-fw fa-link"></i> <a href="//miguel.nz" taget="_blank">Miguel.nz</a></p>
 		</div>
 
-
-		<script type="text/javascript" src="js/scripts.js"></script>
+		<script type="text/javascript" src="js/scripts.min.js"></script>
 
 	</body>
 </html>

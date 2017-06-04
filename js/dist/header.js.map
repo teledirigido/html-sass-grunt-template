@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/header.js"],"names":["document","addEventListener","console","log"],"mappings":";;AAAAA,SAASC,gBAAT,CAA0B,kBAA1B,EAA8C,YAAU;AACtDC,UAAQC,GAAR,CAAY,uBAAZ;AACD,CAFD","file":"header.js","sourcesContent":["document.addEventListener('DOMContentLoaded', function(){\n  console.log('hello from header.js!')\n})"]}
